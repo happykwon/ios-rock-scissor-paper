@@ -2,6 +2,22 @@ import Foundation
 
 
 
+enum ChoiceMenu: String, CaseIterable {
+    case scissor = "1", rock = "2", paper = "3", exit = "0"
+}
+
+
+
+enum Result: String {
+    case win = "이겼습니다."
+    case lose = "졌습니다."
+    case draw = "비겼습니다."
+    case errorDefault = "잘못된 입력입니다. 다시 시도해주세요."
+    case quitGame = "게임종료"
+}
+
+
+
 func endGame() {
     isWorking = false
     print("게임종료")

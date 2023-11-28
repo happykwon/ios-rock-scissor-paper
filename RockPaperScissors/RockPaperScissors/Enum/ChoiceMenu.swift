@@ -8,6 +8,3 @@
 import Foundation
 
 
-enum ChoiceMenu: String, CaseIterable {
-    case scissor = "1", rock = "2", paper = "3", exit = "0"
-}
