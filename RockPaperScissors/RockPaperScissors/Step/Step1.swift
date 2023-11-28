@@ -31,9 +31,9 @@ struct Step1 {
         }
         
         if result == .win {
-            isPlayerTurn = true
+            step2.isPlayerTurn = true
         } else {
-            isPlayerTurn = false
+            step2.isPlayerTurn = false
         }
 
         step2.gameStart()

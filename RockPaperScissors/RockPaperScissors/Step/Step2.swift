@@ -8,22 +8,24 @@
 import Foundation
 
 struct Step2 {
+    var isPlayerTurn: Bool = true
     var currentTurn: String {
         return isPlayerTurn ? "사용자" : "컴퓨터"
     }
     
-    func processUserInput(comPick: Step2UserInputInfo, userPick: Step2UserInputInfo) {
+    mutating func processUserInput(comPick: Step2UserInputInfo, userPick: Step2UserInputInfo) {
         print("사용자: \(userPick), 컴퓨터: \(comPick)")
+        let result = returnResult(comPick: comPick, userPick: userPick)
         
         switch userPick {
         case .exit:
             step1.gameOver()
         case .paper, .rock, .scissor:
-            printResult(for: returnResult(comPick: comPick, userPick: userPick))
+            printResult(for: result)
         }
     }
     
-   func returnResult(comPick: Step2UserInputInfo, userPick: Step2UserInputInfo) -> Step2MessageInfo {
+   mutating func returnResult(comPick: Step2UserInputInfo, userPick: Step2UserInputInfo) -> Step2MessageInfo {
         let isPlayerWin: Bool = (comPick == .scissor && userPick == .rock) ||
                                   (comPick == .rock && userPick == .paper) ||
                                   (comPick == .paper && userPick == .scissor)
@@ -44,7 +46,7 @@ struct Step2 {
         return .turn
     }
     
-   func printResult(for situation: Step2MessageInfo) {
+   mutating func printResult(for situation: Step2MessageInfo) {
         switch situation {
         case .menu:
             print("[" + currentTurn + situation.rawValue , terminator: "")
@@ -56,7 +58,7 @@ struct Step2 {
         }
     }
     
-    func gameStart() {
+    mutating func gameStart() {
         while isGameWorking {
             printResult(for: .menu)
             guard let randomComChoice = comChoices.randomElement(), let comPick = Step2UserInputInfo(rawValue: randomComChoice) else {

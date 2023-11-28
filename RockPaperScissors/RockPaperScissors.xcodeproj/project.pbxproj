@@ -61,13 +61,13 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		225C5B362B15DB75004CFEC2 /* Steps */ = {
+		225C5B362B15DB75004CFEC2 /* Step */ = {
 			isa = PBXGroup;
 			children = (
 				225C5B2C2B15B00F004CFEC2 /* Step1.swift */,
 				225C5B302B15BEED004CFEC2 /* Step2.swift */,
 			);
-			path = Steps;
+			path = Step;
 			sourceTree = "<group>";
 		};
 		C7ABA0D4254EA63000B2367D = {
@@ -89,7 +89,7 @@
 		C7ABA0DF254EA63000B2367D /* RockPaperScissors */ = {
 			isa = PBXGroup;
 			children = (
-				225C5B362B15DB75004CFEC2 /* Steps */,
+				225C5B362B15DB75004CFEC2 /* Step */,
 				225C5B272B15A426004CFEC2 /* Enum */,
 				C7ABA0E0254EA63000B2367D /* main.swift */,
 			);
