@@ -1,14 +1,14 @@
 
 import Foundation
 
-enum UserInput: String {
+enum UserMenuOption: String {
     case scissor = "1"
     case rock = "2"
     case paper = "3"
     case exit = "0"
 }
 
-enum gameMenuPrompt: String {
+enum GameMenuPrompt: String {
     case menu = "가위(1), 바위(2), 보(3)! <종료: 0> : "
     case win = "이겼습니다!"
     case lose = "졌습니다!"
@@ -17,16 +17,16 @@ enum gameMenuPrompt: String {
     case error = "잘못된 입력입니다. 다시 시도해주세요."
 }
 
-func handleUserInput(computerPick: UserInput, userPick: UserInput) {
-    switch userPick {
+func handleUserInput(computerPick: UserMenuOption, userChoice: UserMenuOption) {
+    switch userChoice {
     case .exit:
         gameOver()
     case .paper, .rock, .scissor:
-        printGameResult(computerPick: computerPick, userPick: userPick)
+        handelGameResult(computerPick: computerPick, userPick: userChoice)
     }
 }
 
-func getGameResult(computerPick: UserInput, userPick: UserInput) -> gameMenuPrompt {
+func getGameResult(computerPick: UserMenuOption, userPick: UserMenuOption) -> GameMenuPrompt {
     if computerPick == userPick {
         return .draw
     }
@@ -38,7 +38,7 @@ func getGameResult(computerPick: UserInput, userPick: UserInput) -> gameMenuProm
     }
 }
 
-func displayPromptMenu(for situation: gameMenuPrompt) {
+func displayPromptMenu(for situation: GameMenuPrompt) {
     switch situation {
     case .menu:
         print(situation.rawValue, terminator: "")
@@ -47,8 +47,8 @@ func displayPromptMenu(for situation: gameMenuPrompt) {
     }
 }
 
-func printGameResult(computerPick: UserInput, userPick: UserInput) {
-    let result: gameMenuPrompt = getGameResult(computerPick: computerPick, userPick: userPick)
+func handelGameResult(computerPick: UserMenuOption, userPick: UserMenuOption) {
+    let result: GameMenuPrompt = getGameResult(computerPick: computerPick, userPick: userPick)
     
     displayPromptMenu(for: result)
     
@@ -61,25 +61,26 @@ func printGameResult(computerPick: UserInput, userPick: UserInput) {
 
 func gameOver() {
     displayPromptMenu(for: .exit)
-    isGameWorking.toggle()
+    isGameRunning.toggle()
 }
 
-var isGameWorking: Bool = true
-let computerPick: [String] = ["1", "2", "3"]
-let playerChoices: [String] = ["0", "1", "2", "3"]
+var isGameRunning: Bool = true
+let computerOptions: [String] = ["1", "2", "3"]
+let playerInputOptions: [String] = ["0", "1", "2", "3"]
 
-while isGameWorking {
+while isGameRunning {
     displayPromptMenu(for: .menu)
-    guard let randomCompterChoice = computerPick.randomElement(), let computerPick = UserInput(rawValue: randomCompterChoice) else {
+    guard let randomComputerPick = computerOptions.randomElement(), let computerPick = UserMenuOption(rawValue: randomComputerPick) else {
         continue
     }
     
-    guard let input = readLine(), let userPick = UserInput(rawValue: input), playerChoices.contains(userPick.rawValue) else {
+    guard let input = readLine(), let userChoice = UserMenuOption(rawValue: input), playerInputOptions.contains(userChoice.rawValue) else {
         displayPromptMenu(for: .error)
         continue
     }
     
-    handleUserInput(computerPick: computerPick, userPick: userPick)
+    handleUserInput (computerPick: computerPick, userChoice: userChoice)
 }
+
 
 
