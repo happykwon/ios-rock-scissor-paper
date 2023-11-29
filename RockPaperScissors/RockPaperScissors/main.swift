@@ -17,20 +17,20 @@ enum gameMenuPrompt: String {
     case error = "잘못된 입력입니다. 다시 시도해주세요."
 }
 
-func processUserInput(comPick: UserInput, userPick: UserInput) {
+func handleUserInput(computerPick: UserInput, userPick: UserInput) {
     switch userPick {
     case .exit:
         gameOver()
     case .paper, .rock, .scissor:
-        printGameResult(comPick: comPick, userPick: userPick)
+        printGameResult(computerPick: computerPick, userPick: userPick)
     }
 }
 
-func returnResult(comPick: UserInput, userPick: UserInput) -> gameMenuPrompt {
-    if comPick == userPick {
+func getGameResult(computerPick: UserInput, userPick: UserInput) -> gameMenuPrompt {
+    if computerPick == userPick {
         return .draw
     }
-    switch (comPick, userPick) {
+    switch (computerPick, userPick) {
     case (.scissor, .rock), (.rock, .paper), (.paper, .scissor):
         return .win
     default:
@@ -38,7 +38,7 @@ func returnResult(comPick: UserInput, userPick: UserInput) -> gameMenuPrompt {
     }
 }
 
-func displayGameMenu(for situation: gameMenuPrompt) {
+func displayPromptMenu(for situation: gameMenuPrompt) {
     switch situation {
     case .menu:
         print(situation.rawValue, terminator: "")
@@ -47,10 +47,10 @@ func displayGameMenu(for situation: gameMenuPrompt) {
     }
 }
 
-func printGameResult(comPick: UserInput, userPick: UserInput) {
-    let result: gameMenuPrompt = returnResult(comPick: comPick, userPick: userPick)
+func printGameResult(computerPick: UserInput, userPick: UserInput) {
+    let result: gameMenuPrompt = getGameResult(computerPick: computerPick, userPick: userPick)
     
-    displayGameMenu(for: result)
+    displayPromptMenu(for: result)
     
     if result == .draw {
         return
@@ -60,39 +60,26 @@ func printGameResult(comPick: UserInput, userPick: UserInput) {
 }
 
 func gameOver() {
-    displayGameMenu(for: .exit)
+    displayPromptMenu(for: .exit)
     isGameWorking.toggle()
 }
 
 var isGameWorking: Bool = true
-let comChoices: [String] = ["1", "2", "3"]
+let computerPick: [String] = ["1", "2", "3"]
 let playerChoices: [String] = ["0", "1", "2", "3"]
 
 while isGameWorking {
-    displayGameMenu(for: .menu)
-    guard let randomComChoice = comChoices.randomElement(), let comPick = UserInput(rawValue: randomComChoice) else {
+    displayPromptMenu(for: .menu)
+    guard let randomCompterChoice = computerPick.randomElement(), let computerPick = UserInput(rawValue: randomCompterChoice) else {
         continue
     }
     
     guard let input = readLine(), let userPick = UserInput(rawValue: input), playerChoices.contains(userPick.rawValue) else {
-        displayGameMenu(for: .error)
+        displayPromptMenu(for: .error)
         continue
     }
     
-    processUserInput(comPick: comPick, userPick: userPick)
+    handleUserInput(computerPick: computerPick, userPick: userPick)
 }
-
-
-
-// MARK: - 묵찌빠 게임
-
-struct mukccippa {
-    
-    
-    
-    
-    
-}
-
 
 
