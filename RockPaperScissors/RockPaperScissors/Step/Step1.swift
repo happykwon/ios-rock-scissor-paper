@@ -77,7 +77,7 @@ struct Step1 {
             }
             
             guard let input = readLine(), let userPick = Step1UserInputInfo(rawValue: input), playerChoices.contains(userPick.rawValue) else {
-                step1.printResult(for: .error)
+                printResult(for: .error)
                 continue
             }
             

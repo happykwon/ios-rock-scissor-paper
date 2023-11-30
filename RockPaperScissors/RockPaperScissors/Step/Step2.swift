@@ -67,6 +67,7 @@ struct Step2 {
             
             guard let input = readLine(), let userPick = Step2UserInputInfo(rawValue: input), playerChoices.contains(userPick.rawValue) else {
                 step1.printResult(for: .error)
+                isPlayerTurn = false
                 continue
             }
             
