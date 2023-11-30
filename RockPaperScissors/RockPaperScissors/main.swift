@@ -22,15 +22,15 @@ func handleUserInput(computerPick: UserMenuOption, userChoice: UserMenuOption) {
     case .exit:
         gameOver()
     case .paper, .rock, .scissor:
-        handelGameResult(computerPick: computerPick, userPick: userChoice)
+        handelGameResult(computerPick: computerPick, userChoice: userChoice)
     }
 }
 
-func getGameResult(computerPick: UserMenuOption, userPick: UserMenuOption) -> GameMenuPrompt {
-    if computerPick == userPick {
+func getGameResult(computerPick: UserMenuOption, userChoice: UserMenuOption) -> GameMenuPrompt {
+    if computerPick == userChoice {
         return .draw
     }
-    switch (computerPick, userPick) {
+    switch (computerPick, userChoice) {
     case (.scissor, .rock), (.rock, .paper), (.paper, .scissor):
         return .win
     default:
@@ -47,8 +47,8 @@ func displayPromptMenu(for situation: GameMenuPrompt) {
     }
 }
 
-func handelGameResult(computerPick: UserMenuOption, userPick: UserMenuOption) {
-    let result: GameMenuPrompt = getGameResult(computerPick: computerPick, userPick: userPick)
+func handelGameResult(computerPick: UserMenuOption, userChoice: UserMenuOption) {
+    let result: GameMenuPrompt = getGameResult(computerPick: computerPick, userChoice: userChoice)
     
     displayPromptMenu(for: result)
     
