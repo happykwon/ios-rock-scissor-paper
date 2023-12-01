@@ -10,6 +10,8 @@ enum Step1UserInputInfo: String {
     case rock = "2"
     case paper = "3"
     case exit = "0"
+    
+    
 }
 
 

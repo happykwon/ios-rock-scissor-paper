@@ -49,11 +49,13 @@ struct Step2 {
    mutating func printResult(for situation: Step2MessageInfo) {
         switch situation {
         case .menu:
-            print("[" + currentTurn + situation.rawValue , terminator: "")
+            print(situation, terminator: "")
         case .turn:
-            print(currentTurn + situation.rawValue)
+            let a = situation.description
+             = "컴퓨터"
+            print(situation)
         default:
-            print(currentTurn + situation.rawValue)
+            print(situation)
             isGameWorking = false
         }
     }

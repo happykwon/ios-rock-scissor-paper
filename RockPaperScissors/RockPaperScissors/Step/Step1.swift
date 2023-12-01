@@ -35,7 +35,7 @@ struct Step1 {
         } else {
             step2.isPlayerTurn = false
         }
-
+        
         step2.gameStart()
     }
     
@@ -60,12 +60,13 @@ struct Step1 {
         return .lose
     }
     
+    
     func printResult(for situation: Step1MessageInfo) {
         switch situation {
         case .menu:
-            print(situation.rawValue, terminator: "")
+            print(situation, terminator: "")
         default:
-            print(situation.rawValue)
+            print(situation)
         }
     }
     
@@ -85,4 +86,5 @@ struct Step1 {
         }
     }
 }
+
 
