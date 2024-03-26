@@ -34,6 +34,41 @@
 게임 종료
 
 
+
+## 프로젝트 구조
+```swift
+├── README.md
+└── RockPaperScissors
+    ├── RockPaperScissors
+    │   ├── Enum
+    │   │   ├── GameMenuPrompt.swift
+    │   │   ├── MukChiPpaGameTurn.swift
+    │   │   ├── MukChiPpaUserOption.swift
+    │   │   └── RockScissorPaperUserOption.swift
+    │   ├── GameIOManager.swift
+    │   ├── MukChiPpaGameManager.swift
+    │   ├── RockScissorPaperGameManager.swift
+    │   └── main.swift
+    └── RockPaperScissors.xcodeproj
+        ├── project.pbxproj
+        ├── project.xcworkspace
+        │   ├── contents.xcworkspacedata
+        │   ├── xcshareddata
+        │   │   ├── IDEWorkspaceChecks.plist
+        │   │   └── swiftpm
+        │   │       └── configuration
+        │   └── xcuserdata
+        │       └── kwontaeho.xcuserdatad
+        │           └── UserInterfaceState.xcuserstate
+        └── xcuserdata
+            └── kwontaeho.xcuserdatad
+                ├── xcdebugger
+                │   └── Breakpoints_v2.xcbkptlist
+                └── xcschemes
+                    └── xcschememanagement.plist
+```
+
+
 ## Flowchart
 ![묵찌빠](https://github.com/happykwon/sessac_week_1/assets/149054154/e4d79bae-9dd8-49c9-a5a7-8b5a367a91e8)
 
