@@ -1,7 +1,8 @@
-# ios-juice-maker
+#rock-scsissor-paper
+
 Sessac yagomAcademy 
 
-두번째 쥬스메이커 프로젝트 저장소입니다. 
+두번째 묵찌빠 프로젝트 저장소입니다. 
 
 개발기간 2023.11.20 ~ 11.30
 
