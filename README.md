@@ -1,5 +1,9 @@
- # 새싹과정 Projeact 6-1
- ## 묵찌빠
+# ios-juice-maker
+Sessac yagomAcademy 
+
+두번째 쥬스메이커 프로젝트 저장소입니다. 
+
+개발기간 2023.11.20 ~ 11.30
 
  ### STEP1
  콘솔을 통해 게임을 진행합니다.
